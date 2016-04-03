@@ -20,7 +20,13 @@ QT += core \
 greaterThan(QT_MAJOR_VERSION, 4) {
   QT += widgets \
         webkitwidgets
+
+  qtHaveModule(serialport) {
+    QT += serialport
+    DEFINES += HAVE_QSERIALPORTINFO
+  }
 }
+
 
 unix:DESTDIR = objects
 unix:MOC_DIR = objects
@@ -76,9 +82,7 @@ SOURCES += preferences.cc
 SOURCES += processwait.cc
 SOURCES += upgrade.cc
 SOURCES += version_mismatch.cc
-macx:SOURCES += serial_mac.cc
-unix:SOURCES += serial_unix.cc
-windows:SOURCES += serial_win.cc
+SOURCES += serial.cc
 
 HEADERS += aboutdlg.h
 HEADERS += advdlg.h
@@ -110,7 +114,3 @@ TRANSLATIONS += gpsbabelfe_hu.ts
 TRANSLATIONS += gpsbabelfe_it.ts
 TRANSLATIONS += gpsbabelfe.ts
 TRANSLATIONS += gpsbabel.ts
-
-
-
-

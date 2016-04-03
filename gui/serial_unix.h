@@ -19,7 +19,6 @@
 //  USA
 //
 #include "mainwindow.h"
-#if !defined (Q_OS_MAC) // FIXME: find a better way to hide this on Mac.
 
 static const char *deviceNames[] = {
   "/dev/ttyS0",
@@ -37,4 +36,3 @@ void MainWindow::osLoadDeviceNameCombos(QComboBox *box)
     box->addItem(deviceNames[i]);
   }
 }
-#endif
